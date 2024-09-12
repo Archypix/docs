@@ -1,0 +1,247 @@
+---
+id: auth-signin
+title: "auth_signin"
+description: "Endpoint to sign in a user with an email, password, and optionally a TOTP code. If the user requires 2FA, it will either: - Throw `TFARequired` if no TOTP code is provided, but the user has a TOTP secret. - Throw `TFARequiredOverEmail` if the user has no TOTP secret; in this case, the login should be done again on `POST /auth/signin/email` to request TFA over email. - May log in using the TOTP code, throw `InvalidTOTPCode` if the code is invalid."
+sidebar_label: "auth_signin"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktv2zgQ/isET1tAfmx6857cbgoERZsicYACQeCMRVpiQ5FakkpiGPrvO0NKlpx4fdrTYnOIpOFwnt984z0PUHi+uOfLJpTSBJVDUNbwh4wL6XOn6vi54JdG1FaZwIJlXhWGKcOANV469qJCycAwWYHSGavB+xfrRIYywWw0AFrvUH11vfrBcivklF1tGTpMBpz8q1FOenbxZZkxFdCi1kyiWekWbMJWpbMv7HH1ZXmTNMUjU1tm7GCQKc9qZ5+VkOh404TBegm+d+1l7mSYnjR5/SzdJWUQbR/d7h2l639Q6qFEhzl4mUVVbQsU+tI2WrCNZMIayaAAFFrDHn9c367YDLDEM6qdMjOZPGExKXnpA8NQmMUYUhkpxm+wI8PkrvHKFNHTIWNyHHO4Ms+glaCDzyg/hN+XRaXzKc+4raWL/b0S2FKKZ53iwbMaHFQySEdw2HODH6hzhzWYLAtEBqooAgI+fV5ikHyx52FXk5YPDuPjbYuw6fL5ZMWONHJrAt3GV6hr3eFr9ssTqvbvTdnNL5mTsw4UgsAZSxJjTNAieGK3MZugpKfbSeN9RKM7pw6DDfWaCvX+NOOm0Ro2GmXBNbKlkARGlId14074eneB7KtAn/w2VvlPCIBFasfJHUz72hqfkrmYz+lxPIBo/1+pZex6sE+Smt4XNnYbGxsgNB5fCPprdaLOncaJ5KVpKrJ/ZzDMrXIVusv4d+sqIA+fwJgoWYpKRX7pa0MQu01m28Hz4AFJRxbS4dUtGcP0eYOyjxcoQVOqIr/ztkviVJf/GRyjYpxA89v+3XRNoh7SKY5LaWmSautDhGco8Ws86FRUmTdOhd0ttSdV8eeE6Hay6h0fd/qmp0NgcXITEeHzt5+TOI9X4kPkVvLDYvR0NJj8wLBS8XRgdBr/Lj+o1Ve567u+OI6mm/JSgsCaY5IHnyzgWJ+LNjAtAZnsXNgnAmNLcyaTHBcLaG+JVY8JPi4JB07iatlEthZnk+xieJshpkgDdDPQ1uUrVLWWI1oZUD6wySAbkcggPOaKEeSU2doItg5a4PJyV6vXNY70egP5E17GNeBTdefT36fzSGMIsQoiWrqMYs0OKDtqyoh2/1/c/4XF3YE6yNcwqzVGF6kybaHEOonYiW4SIpBgS2IlPNjvN5jvndNtS2KM2uFqvsfXZ3AqLaz7BzTYjQSt/yecnQX/nFA0WZF7UtdNmq03y6fN+hvLPJd1OKv7MCJOqi8qb7ofC1UaIgcvNEH4P669hMRInFG25xpM0UBBuskm/f0NdQeyUw==
+sidebar_class_name: "post api-method"
+info_path: docs/endpoints/archypix-app-back
+custom_edit_url: null
+hide_send_button: true
+show_extensions: true
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"auth_signin"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/auth/signin"}
+>
+  
+</MethodEndpoint>
+
+
+
+Endpoint to sign in a user with an email, password, and optionally a TOTP code. If the user requires 2FA, it will either: - Throw `TFARequired` if no TOTP code is provided, but the user has a TOTP secret. - Throw `TFARequiredOverEmail` if the user has no TOTP secret; in this case, the login should be done again on `POST /auth/signin/email` to request TFA over email. - May log in using the TOTP code, throw `InvalidTOTPCode` if the code is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><strong
+          className={"openapi-schema__required"}
+        >
+          required
+        </strong>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"email"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"password"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"totp_code"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","nullable":true}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"redirect_url"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","nullable":true}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={true}
+                        schemaName={"UserStatus (string)"}
+                        qualifierMessage={"**Possible values:** [`Unconfirmed`, `Normal`, `Banned`, `Admin`]"}
+                        schema={{"type":"string","enum":["Unconfirmed","Normal","Banned","Admin"],"title":"UserStatus"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"user_id"}
+                        required={true}
+                        schemaName={"uint32"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","format":"uint32","minimum":0}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"name"}
+                        required={true}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"email"}
+                        required={true}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"auth_token"}
+                        required={true}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"status\": \"Unconfirmed\",\n  \"user_id\": 0,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"auth_token\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      
